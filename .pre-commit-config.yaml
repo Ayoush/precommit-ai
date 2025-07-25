@@ -1,4 +1,3 @@
-
 repos:
   - repo: local
     hooks:
@@ -6,6 +5,5 @@ repos:
         name: Gemini AI Code Review
         entry: python3 scripts/gemini_check.py
         language: system
-        types: [javascript, python, markdown]
         files: \.(js|py|md)$
-        exclude: ^scripts/|^README\.md$
+        exclude: ^(scripts/|README\.md)
