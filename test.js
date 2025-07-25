@@ -1,1 +1,1 @@
-const lenght = 'hello'; console.log('test');
+console.log('hello world');
