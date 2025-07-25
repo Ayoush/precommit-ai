@@ -1,0 +1,1 @@
+const lenght = 'hello'; console.log('test');
