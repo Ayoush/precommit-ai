@@ -1,1 +1,1 @@
-const resut = 10 + 20;
+const restl = 10 + 20;
