@@ -24,13 +24,22 @@ This project uses a pre-commit hook to analyze staged files with the Gemini AI m
     pip install -r requirements.txt
     ```
 
-3.  **Set up the pre-commit hook:**
+3.  **Install pre-commit and set up the hooks:**
 
-    This project comes with a pre-commit hook that runs the Gemini AI check. To enable it, you need to make the script executable:
+    This project uses `pre-commit` to manage and run its Git hooks.
+
+    First, install `pre-commit` if you haven't already:
 
     ```bash
-    chmod +x .git/hooks/pre-commit
+    pip install pre-commit
     ```
+
+    Then, from the root of this repository, install the Git hooks:
+
+    ```bash
+    pre-commit install
+    ```
+    This command sets up the Git hooks in your local `.git/hooks` directory, pointing them to the `pre-commit` framework. The hooks will then run automatically on `git commit`.
 
 4.  **Set your Gemini API Key:**
 
