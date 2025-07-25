@@ -6,6 +6,6 @@ repos:
         name: Gemini AI Code Review
         entry: python3 scripts/gemini_check.py
         language: system
-        types: [javascript, python, typescript, markdown]
-        files: \.(js|py|ts|md)$
+        types: [javascript, python, markdown]
+        files: \.(js|py|md)$
         exclude: ^scripts/|^README\.md$

@@ -18,17 +18,40 @@ This project uses a pre-commit hook to analyze staged files with the Gemini AI m
     cd <repository-name>
     ```
 
-2.  **Install dependencies:**
+2.  **Set up a Python virtual environment:**
+
+    It's recommended to use a virtual environment to manage project dependencies.
+
+    ```bash
+    python3 -m venv .venv
+    ```
+
+3.  **Activate the virtual environment:**
+
+    -   **On macOS/Linux:**
+        ```bash
+        source .venv/bin/activate
+        ```
+    -   **On Windows (Command Prompt):**
+        ```bash
+        .venv\Scripts\activate.bat
+        ```
+    -   **On Windows (PowerShell):**
+        ```bash
+        .venv\Scripts\Activate.ps1
+        ```
+
+4.  **Install project dependencies:**
 
     ```bash
     pip install -r requirements.txt
     ```
 
-3.  **Install pre-commit and set up the hooks:**
+5.  **Install pre-commit and set up the hooks:**
 
     This project uses `pre-commit` to manage and run its Git hooks.
 
-    First, install `pre-commit` if you haven't already:
+    First, install `pre-commit` (it will be installed into your active virtual environment):
 
     ```bash
     pip install pre-commit
