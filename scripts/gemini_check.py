@@ -60,24 +60,31 @@ def main():
     print("│ Running Gemini AI Pre-Commit Code Review  │")
     print("└───────────────────────────────────────────┘")
     
-    # Get staged files
-    try:
-        staged_files = subprocess.check_output(['git', 'diff', '--cached', '--name-only'], 
-                                             encoding='utf-8').strip().split('\n')
-        staged_files = [f for f in staged_files if f and f.endswith(('.js', '.py', '.ts', '.md')) and not f.startswith('scripts/') and f != 'README.md']
-    except:
-        print("│ [INFO] No files to check.")
+    # Get files from pre-commit arguments
+    # pre-commit passes staged files as arguments to the hook script
+    files_to_check = sys.argv[1:]
+
+    if not files_to_check:
+        print("│ [INFO] No files passed to check.")
         print("└───────────────────────────────────────────┘")
         return 0
 
-    if not staged_files:
-        print("│ [INFO] No relevant files to check.")
+    # Filter files based on extensions and exclusions defined in .pre-commit-config.yaml
+    # (The pre-commit framework already handles most of this filtering, but a final check is good)
+    relevant_files = []
+    for f in files_to_check:
+        # These checks should ideally align with .pre-commit-config.yaml's `files` and `exclude`
+        if f.endswith(('.js', '.py', '.md')) and not f.startswith('scripts/') and f != 'README.md':
+            relevant_files.append(f)
+
+    if not relevant_files:
+        print("│ [INFO] No relevant files to check after filtering.")
         print("└───────────────────────────────────────────┘")
         return 0
     
     has_errors = False
     
-    for file in staged_files:
+    for file in relevant_files:
         if not os.path.exists(file):
             continue
             
